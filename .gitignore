@@ -1,0 +1,7 @@
+/vendor/
+/.idea/
+/.phpunit.cache/
+/.php-cs-fixer.cache
+composer.lock
+.DS_Store
+.claude/skills/

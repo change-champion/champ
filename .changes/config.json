@@ -1,0 +1,11 @@
+{
+  "baseBranch": "main",
+  "changelog": true,
+  "sections": {
+    "major": "Breaking Changes",
+    "minor": "Features",
+    "patch": "Fixes"
+  },
+  "versionPrefix": "v",
+  "draftRelease": true
+}

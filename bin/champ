@@ -1,0 +1,29 @@
+#!/usr/bin/env php
+<?php
+
+declare(strict_types=1);
+
+// Find autoloader
+$autoloadPaths = [
+        __DIR__ . '/../vendor/autoload.php',          // When installed locally
+        __DIR__ . '/../../../autoload.php',           // When installed as a dependency
+];
+
+$autoloadFound = false;
+foreach ($autoloadPaths as $autoloadPath) {
+    if (file_exists($autoloadPath)) {
+        require $autoloadPath;
+        $autoloadFound = true;
+        break;
+    }
+}
+
+if (!$autoloadFound) {
+    fwrite(STDERR, "Could not find autoloader. Please run 'composer install'.\n");
+    exit(1);
+}
+
+use ChangeChampion\Application;
+
+$application = new Application();
+$application->run();
