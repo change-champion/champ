@@ -11,13 +11,12 @@ on:
       - '!.changes/README.md'
   workflow_dispatch:
 
-permissions:
-  contents: write
-  pull-requests: write
-  issues: write
-
 jobs:
   change-champion:
+    permissions:
+      contents: write
+      pull-requests: write
+      issues: write
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
@@ -25,8 +24,8 @@ jobs:
           ref: ${{ github.event.pull_request.merge_commit_sha || github.sha }}
           fetch-depth: 0
           fetch-tags: true
-          persist-credentials: false
+          persist-credentials: true
 
-      - uses: change-champion/action@{{version}}
+      - uses: change-champion/action@v1.0.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
